@@ -1,6 +1,6 @@
 # Ephemeral
 
-## A lightweight task-focused WMS
+## A pure-python, asynchronous WMS focused on enforcing good software engineering practice
 
 ### Status
 
