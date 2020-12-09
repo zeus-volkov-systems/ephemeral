@@ -1,0 +1,12 @@
+{
+    "name": "load_dataset",
+    "consumes": ["map"],
+    "produces": ["map"],
+    "init_args": [
+      {
+        "name": "variable",
+        "type": "string",
+        "required": true
+      }],
+    "description": "Creates a dataset based on a dataframe and a variable."
+}

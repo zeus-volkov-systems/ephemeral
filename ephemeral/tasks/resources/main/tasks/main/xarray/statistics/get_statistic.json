@@ -1,0 +1,12 @@
+{
+    "name": "get_statistic",
+    "consumes": ["map"],
+    "produces": ["future"],
+    "init_args": [
+      {
+        "name": "statistic",
+        "type": "string",
+        "required": true
+      }],
+    "description": "Computes the specified statistic on a dataset, returning a future."
+}

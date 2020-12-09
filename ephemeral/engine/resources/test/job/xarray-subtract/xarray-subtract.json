@@ -1,0 +1,141 @@
+{
+    "name": "XArray subtraction using Dask Distributed",
+    "datasource" : {
+                    "source": "direct",
+                    "content": {
+                                  "path_one": "{}/engine/resources/test/job/xarray-subtraction/data/sresa1b_ncar_ccsm3-example_1.nc",
+                                  "path_two": "{}/engine/resources/test/job/xarray-subtraction/data/sresa1b_ncar_ccsm3-example_2.nc"
+                               }
+                    },
+    "tasks": [
+                {
+                    "name":"in",
+                    "type":"input"
+                },
+                {
+                    "name": "make-dask-env",
+                    "type": "function",
+                    "method": "dask_connect",
+                    "namespace": "main.dask",
+                    "consumes": "map",
+                    "produces": "map",
+                    "init_args": {}
+                },
+                {
+                    "name": "load-dataframe-1",
+                    "type": "function",
+                    "method": "load_dataframe",
+                    "namespace": "main.xarray",
+                    "consumes": "map",
+                    "produces": "map",
+                    "init_args": {"chunk_size": 10,
+                                  "chunk_parameter": "plev"}
+                },
+                {
+                    "name": "load-dataframe-2",
+                    "type": "function",
+                    "method": "load_dataframe",
+                    "namespace": "main.xarray",
+                    "consumes": "map",
+                    "produces": "map",
+                    "init_args": {"chunk_size": 10,
+                                  "chunk_parameter": "plev"}
+                },
+                {
+                    "name": "load-dataset-1",
+                    "type": "function",
+                    "method": "load_dataset",
+                    "namespace": "main.xarray",
+                    "consumes": "map",
+                    "produces": "map",
+                    "init_args": {"variable": "ua"}
+                },
+                {
+                    "name": "load-dataset-2",
+                    "type": "function",
+                    "method": "load_dataset",
+                    "namespace": "main.xarray",
+                    "consumes": "map",
+                    "produces": "map",
+                    "init_args": {"variable": "ua"}
+                },
+                {
+                    "name": "get-mean",
+                    "type": "function",
+                    "method": "get_statistic",
+                    "namespace": "main.xarray.statistics",
+                    "consumes": "map",
+                    "produces": "future",
+                    "init_args": {"statistic": "mean"}
+                },
+                {
+                    "name": "get-max",
+                    "type": "function",
+                    "method": "get_statistic",
+                    "namespace": "main.xarray.statistics",
+                    "consumes": "map",
+                    "produces": "future",
+                    "init_args": {"statistic": "max"}
+                },
+                {
+                    "name": "get-min",
+                    "type": "function",
+                    "method": "get_statistic",
+                    "namespace": "main.xarray.statistics",
+                    "consumes": "map",
+                    "produces": "future",
+                    "init_args": {"statistic": "min"}
+                },
+                {
+                    "name": "collect-mean",
+                    "type": "function",
+                    "method": "get_result",
+                    "namespace": "main.dask",
+                    "consumes": "future",
+                    "produces": "float",
+                    "init_args": {}
+                },
+                {
+                    "name": "collect-max",
+                    "type": "function",
+                    "method": "get_result",
+                    "namespace": "main.dask",
+                    "consumes": "future",
+                    "produces": "float",
+                    "init_args": {}
+                },
+                {
+                    "name": "collect-min",
+                    "type": "function",
+                    "method": "get_result",
+                    "namespace": "main.dask",
+                    "consumes": "future",
+                    "produces": "float",
+                    "init_args": {}
+                },
+                {
+                    "name": "max-out",
+                    "type": "output"
+                },
+                {
+                    "name": "min-out",
+                    "type": "output"
+                },
+                {
+                    "name": "mean-out",
+                    "type": "output"
+                }
+           ],
+    "workflow": [["in", "make-dask-env"],
+                ["make-dask-env", "load-dataframe"],
+                ["load-dataframe", "load-dataset"],
+                ["load-dataset", "get-mean"],
+                ["load-dataset", "get-max"],
+                ["load-dataset", "get-min"],
+                ["get-mean", "collect-mean"],
+                ["get-min", "collect-min"],
+                ["get-max", "collect-max"],
+                ["collect-mean", "mean-out"],
+                ["collect-min", "min-out"],
+                ["collect-max", "max-out"]]
+}

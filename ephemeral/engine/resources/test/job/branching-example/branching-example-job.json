@@ -1,0 +1,89 @@
+{
+    "name": "Branching example job",
+    "datasource" : {
+                    "source": "direct",
+                    "content": {"input": "An input string for testing splitting of words"}
+                    },
+    "tasks": [
+                {
+                    "name":"in",
+                    "type":"input"
+                },
+                {
+                    "name": "split",
+                    "type": "function",
+                    "method": "split_string",
+                    "namespace": "main.parsing.strings",
+                    "consumes": "string",
+                    "produces": "list(string)",
+                    "init_args": {}
+                },
+                {
+                    "name": "capitalize",
+                    "type": "function",
+                    "method": "capitalize_words",
+                    "namespace": "main.strings.operations",
+                    "consumes": "list(string)",
+                    "produces": "list(string)",
+                    "init_args": {}
+                },
+                {
+                    "name": "filter-long",
+                    "type": "function",
+                    "method": "filter_string_length",
+                    "namespace": "main.parsing.strings",
+                    "consumes": "list(string)",
+                    "produces": "list(string)",
+                    "init_args": {
+                                    "word_length": 5,
+                                    "comparison": "greater"
+                                 }
+                },
+                {
+                    "name": "filter-short",
+                    "type": "function",
+                    "method": "filter_string_length",
+                    "namespace": "main.parsing.strings",
+                    "consumes": "list(string)",
+                    "produces": "list(string)",
+                    "init_args": {
+                                    "word_length": 6,
+                                    "comparison": "less"
+                                 }
+                },
+                {
+                    "name": "word-count-short",
+                    "type": "function",
+                    "method": "char_count",
+                    "namespace": "main.strings.operations",
+                    "consumes": "list(string)",
+                    "produces": "list(integer)",
+                    "init_args": {}
+                },
+                {
+                    "name": "word-count-long",
+                    "type": "function",
+                    "method": "char_count",
+                    "namespace": "main.strings.operations",
+                    "consumes": "list(string)",
+                    "produces": "list(integer)",
+                    "init_args": {}
+                },
+                {
+                    "name": "short-output",
+                    "type": "output"
+                },
+                {
+                    "name": "long-output",
+                    "type": "output"
+                }
+           ],
+    "workflow": [["in", "split"],
+                 ["split", "capitalize"],
+                 ["capitalize", "filter-short"],
+                 ["capitalize", "filter-long"],
+                 ["filter-long", "word-count-long"],
+                 ["filter-short", "word-count-short"],
+                 ["word-count-short", "short-output"],
+                 ["word-count-long", "long-output"]]
+}

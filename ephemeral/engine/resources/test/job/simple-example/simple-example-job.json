@@ -1,0 +1,28 @@
+{
+    "name": "Example Job",
+    "datasource" : {
+                    "source": "direct",
+                    "content": {"input": "this is our test string input"}
+                    },
+    "tasks": [
+                {
+                    "name":"in",
+                    "type":"input"
+                },
+                {
+                    "name": "example",
+                    "type": "function",
+                    "method": "example",
+                    "namespace": "main",
+                    "consumes": "string",
+                    "produces": "string",
+                    "init_args": {"example_property": "This is a test!"}
+                },
+                {
+                    "name": "out",
+                    "type": "output"
+                }
+           ],
+    "workflow": [["in", "example"],
+                ["example", "out"]]
+}

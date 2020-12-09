@@ -1,0 +1,45 @@
+{
+    "fields":
+    [
+        {
+            "name": "name",
+            "type": "string",
+            "description": "A human readable name for the task."
+        },
+        {
+            "name": "method",
+            "type": "string",
+            "description": "The method which the task corresponds to."
+        },
+        {
+            "name": "namespace",
+            "type": "string",
+            "description": "Provides the fully qualified namespace for the function mapped to the task."
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "description": "Labels a task as an input, output, or function."
+        },
+        {
+            "name": "id",
+            "type": "string",
+            "description": "A unique identifier used for task routing."
+        },
+        {
+            "name": "consumes",
+            "type": "string",
+            "description": "Describes for this context what datatype the task will consume."
+        },
+        {
+            "name": "produces",
+            "type": "string",
+            "description": "Describes for this context what datatype the task will produce."
+        },
+        {
+            "name": "init_args",
+            "type": "map",
+            "description": "Provides a map of initialization arguments (constructor arguments)."
+        }
+    ]
+}

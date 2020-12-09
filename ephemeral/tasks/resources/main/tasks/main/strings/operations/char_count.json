@@ -1,0 +1,7 @@
+{
+    "name": "char_count",
+    "consumes": ["list(string)"],
+    "produces": ["list(integer)"],
+    "init_args":[],
+    "description": "This function takes a list of strings (words), counts the characters of each, and returns a list of counts."
+}

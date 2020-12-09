@@ -1,0 +1,20 @@
+{
+    "fields":
+    [
+        {
+            "name": "id",
+            "type": "string",
+            "description": "A globally unique identifier used for identifying the logger inside ephemeral."
+        },
+        {
+            "name": "level",
+            "type": "string",
+            "description": "A level to report at for the logger."
+        },
+        {
+            "name": "filename",
+            "type": "string",
+            "description": "A fully qualified path to a log file to write messages to."
+        }
+    ]
+}

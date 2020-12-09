@@ -1,0 +1,7 @@
+{
+    "name": "get_result",
+    "consumes": ["future"],
+    "produces": ["float"],
+    "init_args": [],
+    "description": "Converts a dask distributed future to a python numerical result."
+}

@@ -1,0 +1,7 @@
+{
+    "name": "dask_connect",
+    "consumes": ["map"],
+    "produces": ["map"],
+    "init_args": [],
+    "description": "Spins up and returns a local dask client."
+}

@@ -1,0 +1,17 @@
+{
+    "name": "load_dataframe",
+    "consumes": ["map"],
+    "produces": ["map"],
+    "init_args": [
+      {
+        "name": "chunk_size",
+        "type": "integer",
+        "required": true
+      },
+      {
+        "name": "chunk_parameter",
+        "type": "string",
+        "required": true
+      }],
+    "description": "Creates a dataframe based on a resource."
+}

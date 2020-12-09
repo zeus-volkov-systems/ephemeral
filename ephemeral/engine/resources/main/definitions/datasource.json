@@ -1,0 +1,15 @@
+{
+    "fields":
+    [
+        {
+            "name": "source",
+            "type": "string",
+            "description": "Describes where the datasource comes from."
+        },
+        {
+            "name": "content",
+            "type": "map",
+            "description": "The content of the datasource."
+        }
+    ]
+}

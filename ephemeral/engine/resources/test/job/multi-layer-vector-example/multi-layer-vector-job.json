@@ -1,0 +1,60 @@
+{
+    "name": "Multi Layer Vector Job",
+    "datasource" : {
+                    "source": "direct",
+                    "content": {
+                                  "seasons": ["spring", "summer", "winter", "autumn"],
+                                  "parameters": ["tmax", "tmin", "precip"]
+                               }
+                    },
+    "tasks": [
+                {
+                    "name":"in",
+                    "type":"input"
+                },
+                {
+                    "name": "split-seasons",
+                    "type": "function",
+                    "method": "split_list",
+                    "namespace": "main.parsing.split",
+                    "consumes": "list",
+                    "produces": "split-map",
+                    "init_args": {
+                                    "list_key": "seasons",
+                                    "key_name": "season"
+                                  }
+                },
+                {
+                    "name": "split-parameters",
+                    "type": "function",
+                    "method": "split_list",
+                    "namespace": "main.parsing.split",
+                    "consumes": "split-map",
+                    "produces": "split-map",
+                    "init_args": {
+                                    "list_key": "parameters",
+                                    "key_name": "parameter"
+                                  }
+                },
+                {
+                    "name": "combine-words",
+                    "type": "function",
+                    "method": "combine_words",
+                    "namespace": "main.strings.operations",
+                    "consumes": "split-map",
+                    "produces": "combined-string",
+                    "init_args": {
+                                    "dict_keys": ["season", "parameter"],
+                                    "final_key": "combined"
+                                 }
+                },
+                {
+                    "name": "combined-output",
+                    "type": "output"
+                }
+           ],
+    "workflow": [["in", "split-seasons"],
+                 ["split-seasons", "split-parameters"],
+                 ["split-parameters", "combine-words"],
+                 ["combine-words", "combined-output"]]
+}

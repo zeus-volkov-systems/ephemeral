@@ -1,0 +1,25 @@
+{
+    "fields":
+    [
+        {
+            "name": "name",
+            "type": "string",
+            "description": "A unique name for the user library."
+        },
+        {
+            "name": "id",
+            "type": "string",
+            "description": "A globally unique identifier used for identifying the library inside ephemeral."
+        },
+        {
+            "name": "tasks",
+            "type": "list",
+            "description": "A list of tasks belonging to the user library."
+        },
+        {
+            "name": "jobs",
+            "type": "list",
+            "description": "A list of jobs belonging to the user library."
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "example",
+    "consumes": ["string", "list"],
+    "produces": ["string"],
+    "init_args":
+    [
+        {
+            "name": "example_property",
+            "type": "string",
+            "required": true
+        }
+    ],
+    "description": "This is a simple test function to demonstrate the job builder and task factory."
+}

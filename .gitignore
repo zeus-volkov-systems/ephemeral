@@ -1,0 +1,34 @@
+# Compiled source #
+###################
+*.pyc
+engine.egg-info
+
+# Packages #
+############
+
+# Logs and databases #
+######################
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+
+#Build stuff#
+#############
+build
+dist
+
+#Distribution specific#
+#######################
+ephemeral/ephemeral.egg-info/*
+ephemeral.egg-info/*
+
+Pipfile
+Pipfile.lock
+
+dask-worker-space/*
+.vscode/*
+.circleci/*

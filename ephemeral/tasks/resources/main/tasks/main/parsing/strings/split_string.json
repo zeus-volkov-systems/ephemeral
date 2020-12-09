@@ -1,0 +1,7 @@
+{
+    "name": "split_string",
+    "consumes": ["string"],
+    "produces": ["list(string)"],
+    "init_args": [],
+    "description": "This function takes a string and splits it on spaces into a list of strings."
+}

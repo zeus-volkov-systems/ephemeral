@@ -1,0 +1,2 @@
+recursive-include ephemeral/engine/resources *
+recursive-include ephemeral/tasks/resources *

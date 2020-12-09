@@ -1,0 +1,7 @@
+{
+    "name": "capitalize_words",
+    "consumes": ["list(string)"],
+    "produces": ["list(string)"],
+    "init_args":[],
+    "description": "This function takes a list of strings (words) and capitalizes each, returning the updated list."
+}

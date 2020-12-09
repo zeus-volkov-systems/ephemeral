@@ -1,0 +1,30 @@
+{
+    "fields":
+    [
+        {
+            "name": "name",
+            "type": "string",
+            "description": "A unique-to-the-job, human readable name for the job."
+        },
+        {
+            "name": "id",
+            "type": "string",
+            "description": "A globally unique identifier used for job monitoring and client-side pub/sub."
+        },
+        {
+            "name": "tasks",
+            "type": "list",
+            "description": "A list of tasks belonging to the job which should be executed."
+        },
+        {
+            "name": "datasource",
+            "type": "map",
+            "description": "Describes how to aquire input data for the first task in the chain."
+        },
+        {
+            "name": "workflow",
+            "type": "list",
+            "description": "Describes how tasks flow from one to another. Should be a list of two value vectors."
+        }
+    ]
+}

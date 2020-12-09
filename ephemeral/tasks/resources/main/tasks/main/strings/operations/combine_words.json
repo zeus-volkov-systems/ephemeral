@@ -1,0 +1,19 @@
+{
+    "name": "combine_words",
+    "consumes": ["split-map"],
+    "produces": ["combined-string"],
+    "init_args":[
+      {
+          "name": "dict_keys",
+          "type": "list",
+          "required": true
+      },
+      {
+          "name": "final_key",
+          "type": "string",
+          "required": true
+      }
+
+    ],
+    "description": "This function takes a list of dict keys to combine, and combines all of the values into a single string as the final key."
+}

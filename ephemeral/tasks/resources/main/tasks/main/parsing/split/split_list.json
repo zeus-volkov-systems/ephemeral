@@ -1,0 +1,19 @@
+{
+    "name": "split_list",
+    "consumes": ["list", "split-map"],
+    "produces": ["split-map"],
+    "init_args":[
+      {
+          "name": "list_key",
+          "type": "string",
+          "required": true
+      },
+      {
+          "name": "key_name",
+          "type": "string",
+          "required": true
+      }
+
+    ],
+    "description": "This function takes the name of a list that should be split, and creates a dictionary for every value in the list, returning a list of those created dictionaries. Every other key on the input dictionary is copied to the created dictionaries."
+}
